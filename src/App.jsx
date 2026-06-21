@@ -433,7 +433,28 @@ const App = () => {
         </div>
       </motion.section>
 
-      {/* 5. Final CTA */}
+      {/* 5. Meet the Founder */}
+      <section className="founder-section" style={{ padding: '80px 0', background: 'var(--bg-white)', textAlign: 'center' }}>
+        <div className="container">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ maxWidth: '600px', margin: '0 auto' }}
+          >
+            <div style={{ width: '100px', height: '100px', borderRadius: '50%', background: 'var(--emerald-light)', color: 'var(--emerald-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '32px', fontWeight: 'bold', margin: '0 auto 24px', border: '2px solid var(--emerald-main)' }}>
+              SK
+            </div>
+            <h2 className="section-title" style={{ marginBottom: '16px' }}>Meet the Founder</h2>
+            <p className="feature-desc" style={{ fontSize: '1.1rem', lineHeight: '1.6', fontStyle: 'italic', color: 'var(--text-dark)' }}>
+              "Hi, I'm Shivam Kumar, a 1st-year B.Tech CSE student. I built Tasklie because I experienced the daily academic struggles of college students firsthand. My mission is to empower students to help each other, earn fairly, and succeed together without falling prey to scams."
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 6. Final CTA */}
       <section className="final-cta">
         <motion.div 
           className="container"
@@ -477,7 +498,6 @@ const App = () => {
           <div className="footer-bottom">
             <p>&copy; {new Date().getFullYear()} Tasklie. All rights reserved.</p>
             <div style={{ textAlign: 'right' }}>
-              <p style={{ marginBottom: '4px' }}>Founder: <strong>Shivam Kumar</strong></p>
               <p style={{ opacity: 0.8 }}>Powered by <strong>KrypZen</strong></p>
             </div>
           </div>
