@@ -146,24 +146,55 @@ const App = () => {
             <div className="mockup-container animate-float">
               <div className="phone-mockup">
                 <div className="phone-notch"></div>
-                <div className="mockup-ui">
+                <div className="mockup-ui" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  {/* Mockup Header */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--navy-light)' }}></div>
-                    <div style={{ width: '100px', height: '16px', borderRadius: '8px', background: 'var(--border-color)' }}></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <img src="/logo.jpeg" alt="Logo" style={{ width: '32px', height: '32px', borderRadius: '8px', objectFit: 'cover' }} />
+                      <span style={{ fontWeight: '700', fontSize: '14px', color: 'var(--navy-dark)' }}>Tasklie</span>
+                    </div>
+                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'var(--navy-light)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 'bold' }}>SK</div>
                   </div>
+
+                  {/* Wallet / Earnings Card */}
                   <motion.div 
-                    style={{ height: '100px', borderRadius: '16px', background: 'var(--bg-white)', marginTop: '20px', padding: '16px' }}
+                    style={{ borderRadius: '16px', background: 'linear-gradient(135deg, var(--emerald-main), var(--emerald-dark))', padding: '16px', color: 'white', boxShadow: '0 10px 20px -5px rgba(16, 185, 129, 0.4)' }}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <div style={{ width: '60%', height: '14px', borderRadius: '4px', background: 'var(--border-color)', marginBottom: '12px' }}></div>
-                    <div style={{ width: '40%', height: '14px', borderRadius: '4px', background: 'var(--border-color)' }}></div>
+                    <div style={{ fontSize: '12px', opacity: 0.9, marginBottom: '4px' }}>Escrow Balance</div>
+                    <div style={{ fontSize: '24px', fontWeight: '800', marginBottom: '12px' }}>$145.00</div>
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <div style={{ flex: 1, height: '28px', background: 'rgba(255,255,255,0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '600' }}>Withdraw</div>
+                      <div style={{ flex: 1, height: '28px', background: 'white', color: 'var(--emerald-dark)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '600' }}>Add Funds</div>
+                    </div>
                   </motion.div>
-                  <motion.div 
-                    style={{ height: '80px', borderRadius: '16px', background: 'var(--emerald-light)', marginTop: '10px', padding: '16px', border: '1px solid var(--emerald-main)' }}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <div style={{ width: '50%', height: '14px', borderRadius: '4px', background: 'var(--emerald-main)', marginBottom: '12px' }}></div>
-                  </motion.div>
+
+                  {/* Active Tasks */}
+                  <div>
+                    <div style={{ fontSize: '13px', fontWeight: '700', color: 'var(--navy-dark)', marginBottom: '12px' }}>Active Tasks</div>
+                    
+                    <motion.div 
+                      style={{ background: 'var(--bg-white)', borderRadius: '12px', padding: '12px', marginBottom: '8px', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                      whileHover={{ scale: 1.02, borderColor: 'var(--navy-main)' }}
+                    >
+                      <div>
+                        <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-dark)', marginBottom: '2px' }}>Calculus II Help</div>
+                        <div style={{ fontSize: '10px', color: 'var(--text-light)' }}>Due in 2 days • Solver: Anonym...</div>
+                      </div>
+                      <div style={{ background: '#FEF3C7', color: '#D97706', padding: '4px 8px', borderRadius: '4px', fontSize: '10px', fontWeight: '700' }}>In Progress</div>
+                    </motion.div>
+
+                    <motion.div 
+                      style={{ background: 'var(--bg-white)', borderRadius: '12px', padding: '12px', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                      whileHover={{ scale: 1.02, borderColor: 'var(--emerald-main)' }}
+                    >
+                      <div>
+                        <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-dark)', marginBottom: '2px' }}>Physics Lab Report</div>
+                        <div style={{ fontSize: '10px', color: 'var(--text-light)' }}>Completed • Review Pending</div>
+                      </div>
+                      <div style={{ background: 'var(--emerald-light)', color: 'var(--emerald-dark)', padding: '4px 8px', borderRadius: '4px', fontSize: '10px', fontWeight: '700' }}>Review</div>
+                    </motion.div>
+                  </div>
                 </div>
               </div>
             </div>
