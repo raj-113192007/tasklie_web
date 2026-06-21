@@ -158,14 +158,14 @@ const App = () => {
 
                   {/* Wallet / Earnings Card */}
                   <motion.div 
-                    style={{ borderRadius: '16px', background: 'linear-gradient(135deg, var(--emerald-main), var(--emerald-dark))', padding: '16px', color: 'white', boxShadow: '0 10px 20px -5px rgba(16, 185, 129, 0.4)' }}
+                    style={{ borderRadius: '16px', background: 'linear-gradient(135deg, #10B981, #047857)', padding: '16px', color: '#ffffff', boxShadow: '0 10px 20px -5px rgba(16, 185, 129, 0.4)' }}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <div style={{ fontSize: '12px', opacity: 0.9, marginBottom: '4px' }}>Escrow Balance</div>
-                    <div style={{ fontSize: '24px', fontWeight: '800', marginBottom: '12px' }}>$145.00</div>
+                    <div style={{ fontSize: '12px', opacity: 0.9, marginBottom: '4px', color: '#f0fdf4' }}>Escrow Balance</div>
+                    <div style={{ fontSize: '24px', fontWeight: '800', marginBottom: '12px', color: '#ffffff' }}>₹12,500</div>
                     <div style={{ display: 'flex', gap: '8px' }}>
-                      <div style={{ flex: 1, height: '28px', background: 'rgba(255,255,255,0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '600' }}>Withdraw</div>
-                      <div style={{ flex: 1, height: '28px', background: 'white', color: 'var(--emerald-dark)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '600' }}>Add Funds</div>
+                      <div style={{ flex: 1, height: '28px', background: 'rgba(255,255,255,0.25)', color: '#ffffff', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '600', border: '1px solid rgba(255,255,255,0.4)' }}>Withdraw</div>
+                      <div style={{ flex: 1, height: '28px', background: '#ffffff', color: '#047857', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '700' }}>Add Funds</div>
                     </div>
                   </motion.div>
 
