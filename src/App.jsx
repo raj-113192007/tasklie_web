@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const AppStoreBadge = () => (
+const AppStoreBadge = ({ onClick }) => (
   <motion.a 
     href="#" 
     className="store-badge"
     whileHover={{ y: -5, scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
+    onClick={onClick}
   >
     <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
       <path d="M14.71 5.92c.67-.81 1.13-1.92.99-3.03-1.01.05-2.22.68-2.92 1.5-.54.63-1.07 1.76-.91 2.85 1.13.09 2.17-.53 2.84-1.32zm-3.03 1.95c-1.57-.04-2.8 1.05-3.56 1.05-.76 0-1.84-1-3.13-.98-1.68.02-3.23.97-4.1 2.49-1.76 3.06-.45 7.6 1.28 10.08.84 1.22 1.83 2.58 3.16 2.53 1.29-.05 1.78-.83 3.34-.83 1.55 0 2.01.83 3.36.8 1.39-.02 2.25-1.24 3.09-2.46.97-1.42 1.38-2.79 1.4-2.86-.03-.01-2.67-1.02-2.7-4.08-.03-2.56 2.09-3.8 2.13-3.83-1.2-1.74-3.05-1.98-3.7-2.01-1.63-.16-3.21.96-4.04.96z"/>
@@ -18,12 +19,13 @@ const AppStoreBadge = () => (
   </motion.a>
 );
 
-const GooglePlayBadge = () => (
+const GooglePlayBadge = ({ onClick }) => (
   <motion.a 
     href="#" 
     className="store-badge"
     whileHover={{ y: -5, scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
+    onClick={onClick}
   >
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M2 2.5v19c0 .5.3.8.8.8.2 0 .4-.1.6-.2l10.3-6.2L2 2.5z" fill="#00E676"/>
@@ -40,9 +42,46 @@ const GooglePlayBadge = () => (
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('students');
+  const [showToast, setShowToast] = useState(false);
+
+  const handleDownloadClick = (e) => {
+    e.preventDefault();
+    setShowToast(true);
+  };
+
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
 
   return (
     <div className="app">
+      {/* Toast Notification */}
+      <div className="toast-container">
+        <AnimatePresence>
+          {showToast && (
+            <motion.div 
+              className="toast"
+              initial={{ opacity: 0, y: -20, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 8v4"></path>
+                <path d="M12 16h.01"></path>
+              </svg>
+              <span>🚀 The Tasklie app is currently in development. Coming Soon!</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
       {/* Navbar */}
       <motion.nav 
         className="navbar"
@@ -60,6 +99,7 @@ const App = () => {
             style={{ padding: '10px 24px', fontSize: '0.95rem' }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={handleDownloadClick}
           >
             Get the App
           </motion.button>
@@ -93,8 +133,8 @@ const App = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <AppStoreBadge />
-              <GooglePlayBadge />
+              <AppStoreBadge onClick={handleDownloadClick} />
+              <GooglePlayBadge onClick={handleDownloadClick} />
             </motion.div>
           </div>
           <motion.div 
@@ -130,6 +170,62 @@ const App = () => {
           </motion.div>
         </div>
       </header>
+
+      {/* NEW: Problem vs Solution Section */}
+      <section className="problem-solution-section">
+        <div className="container">
+          <motion.h2 
+            className="section-title"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            A Broken Market vs. The Tasklie Solution
+          </motion.h2>
+          
+          <div className="problem-grid" style={{ marginTop: '40px' }}>
+            {/* The Problem */}
+            <motion.div 
+              className="problem-card"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="feature-icon-wrapper" style={{ marginBottom: '20px' }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+              </div>
+              <h3 className="feature-title" style={{ color: '#991B1B' }}>The Problem</h3>
+              <p className="feature-desc" style={{ color: '#7F1D1D' }}>
+                The current market is broken. Students are overwhelmed by academic pressure and struggle to find reliable, affordable help without risking scams, exposed identities, or exorbitant agency fees.
+              </p>
+            </motion.div>
+
+            {/* The Solution */}
+            <motion.div 
+              className="solution-card"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="feature-icon-wrapper" style={{ marginBottom: '20px' }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h3 className="feature-title" style={{ color: 'var(--emerald-hover)' }}>The Tasklie Solution</h3>
+              <p className="feature-desc" style={{ color: 'var(--emerald-hover)' }}>
+                A revolutionary peer-to-peer ecosystem. We connect students directly, guaranteeing 100% identity protection, secure escrow payments, and an intuitive chat interface to get work done efficiently.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* 2. The App Experience */}
       <section className="features-section">
@@ -317,8 +413,8 @@ const App = () => {
         >
           <h2 className="section-title">Ready to Transform Your College Life? <br />Download the App Today.</h2>
           <div className="hero-badges" style={{ justifyContent: 'center' }}>
-            <AppStoreBadge />
-            <GooglePlayBadge />
+            <AppStoreBadge onClick={handleDownloadClick} />
+            <GooglePlayBadge onClick={handleDownloadClick} />
           </div>
         </motion.div>
       </section>
