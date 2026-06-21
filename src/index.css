@@ -223,3 +223,54 @@ body {
   border-top: 1px solid rgba(0,0,0,0.05);
   margin-top: 40px;
 }
+
+/* ─── RESPONSIVE MEDIA QUERIES ─────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 48px;
+    padding-top: 60px;
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-visual {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    padding: 0 16px;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-content > div {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-content > div > button {
+    width: 100%;
+  }
+}
